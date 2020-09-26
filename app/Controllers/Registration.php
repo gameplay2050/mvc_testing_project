@@ -58,6 +58,79 @@ class Registration extends Controller {
         
 	}
 
+    public function updatedata()
+	{
+		
+        // check the save button pressed
+
+		if($this->request->getPost('update'))
+		{
+            
+
+            // getting form data
+            $data = [
+
+                'first_name' => $this->request->getPost('first_name'),
+                'last_name' => $this->request->getPost('last_name'),
+                'email' => $this->request->getPost('email'),
+                'password' =>12345,
+
+            ];
+
+           
+
+            
+            $user_id = $this->request->getPost('user_id');
+
+            // create a model
+            $update_user = new ModelUsers();
+
+            // pass data to model
+           $result= $update_user->updaterecord($data, $user_id);
+
+
+            return redirect()->to(base_url('public/?result='.$result)); 
+
+
+			
+        }
+        
+    }
+    
+    public function delete_data($id){
+
+        $data = [
+
+            'id' => $id
+        ];
+
+        // create a model
+        $delete_user = new ModelUsers();
+
+        // pass data to model
+        $result = $delete_user->deleterecord($data);
+        return redirect()->to(base_url('public/?result='.$result)); 
+    }
+
+    public function getUserInfo($id){
+
+        $data = [
+
+            'id' => $id
+        ];
+
+        // create a model
+        $get_user_data = new ModelUsers();
+
+        // pass data to model
+        $result = [
+
+            'data' => $get_user_data->getspecificrecord($data),
+
+        ];
+
+        return view('update',$result); 
+    }
 }
 
 ?>

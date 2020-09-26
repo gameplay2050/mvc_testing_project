@@ -23,7 +23,7 @@
   <!-- Card body -->
   <div class="card-body">
 
-	<form method="post" action="savedata">
+	<form name="myForm" method="post" action="savedata" onsubmit="return email_validate()">
   <center> <h1>New User <br/> Form</h1> </center>
    <label class="font-weight-light">First Name</label>
 	  <div class="form-group">
@@ -57,3 +57,20 @@
 
 	</div>
 	</div>
+
+
+	<script>
+	
+		function email_validate()
+		{
+			if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myForm.email.value))
+			{
+				return true;
+			}
+			{
+				alert("You have entered an invalid email address!")
+				return false;
+			}
+		}
+
+	</script>

@@ -52,6 +52,30 @@ class ModelUsers extends Model {
         return $query->getResult();
     }
 
+    function getspecificrecord($data) {
+        
+        $query = $this->db->table('users')->getWhere($data);
+
+        return $query->getResultArray();
+    }
+
+
+    function deleterecord($data) {
+        
+        $this->db->table('users')->delete($data);
+
+        return 2;
+    }
+
+
+    // store data to the database
+    function updaterecord($data, $id) {
+      
+        $this->db->table('users')->update($data,array('id'=>$id));
+        return 3;
+        
+    }
+
     
 
 }

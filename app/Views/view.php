@@ -16,6 +16,20 @@
     echo ' <br/> <center> <h3 style="color:green; background:silver; width:100%;">' . $result . '</h3> </center>';
   }
 
+  if($_GET['result'] == 2)
+  {
+      $result = "Record Deleted.";
+
+      echo ' <br/> <center> <h3 style="color:green; background:silver; width:100%;">' . $result . '</h3> </center>';
+  }
+
+  if($_GET['result'] == 3)
+  {
+      $result = "Record Updated.";
+
+      echo ' <br/> <center> <h3 style="color:green; background:silver; width:100%;">' . $result . '</h3> </center>';
+  }
+
 }
 ?>
 
@@ -30,6 +44,8 @@
     <th class="th-sm">First Name</th>
     <th class="th-sm">Last Name</th>
     <th class="th-sm">Email</th>
+    <th class="th-sm">Delete</th>
+    <th class="th-sm">Update</th>
     </tr>
     </thead>
     <tbody>
@@ -42,6 +58,8 @@
         <th class="th-sm"><?php echo $display->first_name;?></th>
         <th class="th-sm"><?php echo $display->last_name;?></th>
         <th class="th-sm"><?php echo $display->email;?></th>
+        <th class="th-sm"> <a href="Registration/delete_data/<?php echo $display->id;?>"> Delete </a></th>
+        <th class="th-sm"> <a href="Registration/getUserInfo/<?php echo $display->id;?>"> Update </a></th>
         </tr>
 
     <?php 
